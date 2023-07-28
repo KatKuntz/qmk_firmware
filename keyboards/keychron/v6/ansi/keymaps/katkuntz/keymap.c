@@ -14,8 +14,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "keycode.h"
 #include QMK_KEYBOARD_H
+#include "keychron_common.h"
 
 // clang-format off
 
@@ -26,8 +26,6 @@ enum layers{
   WIN_FN
 };
 
-#define KC_TASK LGUI(KC_TAB)
-#define KC_FLXP LGUI(KC_E)
 #define KC_SNIP LSG(KC_S)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -60,3 +58,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,            _______,  _______,  _______,  _______,  _______,  NK_TOGG,  _______,  _______,  _______,  _______,              _______,            _______,            _______,  _______,  _______,
         _______,  _______,  _______,                                _______,                                _______,  _______,  _______,    _______,  _______,  _______,  _______,  _______,            _______,  _______),
 };
+
+// clang-format on
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if (!process_record_keychron(keycode, record)) {
+        return false;
+    }
+    return true;
+}
+
+void housekeeping_task_user(void) {
+    housekeeping_task_keychron();
+}
