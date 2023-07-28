@@ -1,6 +1,7 @@
 #pragma once
 
 #define ENABLE_COMPILE_KEYCODE
+#define DOUBLE_TAP_SHIFT_TURNS_ON_CAPS_WORD
 
 /* Enable NUM_LOCK_LED_INDEX */
 #define NUM_LOCK_LED_INDEX 37
